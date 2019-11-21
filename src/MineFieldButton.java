@@ -1,5 +1,4 @@
 import javax.swing.JButton;
-
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 public class MineFieldButton extends JButton{
