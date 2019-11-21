@@ -14,7 +14,7 @@ public class MineWalker {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Mine Walker");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new MineWalkerPanel());
+		frame.getContentPane().add(new MineWalkerPanel(8, 8));
 		frame.pack();
 		frame.setVisible(true);
 	}
