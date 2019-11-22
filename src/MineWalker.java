@@ -1,4 +1,4 @@
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /*
  * 
@@ -14,7 +14,9 @@ public class MineWalker {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Mine Walker");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new MineWalkerPanel(8, 8));
+		MineWalkerPanel minePanel = new MineWalkerPanel(8, 8);
+		minePanel.setLayout(new BoxLayout(minePanel, BoxLayout.X_AXIS));
+		frame.getContentPane().add(minePanel);
 		frame.pack();
 		frame.setVisible(true);
 	}

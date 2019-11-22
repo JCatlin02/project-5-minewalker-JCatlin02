@@ -1,33 +1,23 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import javax.swing.*;
+import javax.swing.border.Border;
 
 public class MineWalkerPanel extends JPanel{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton reset;
-	private JButton showMines;
-	private JButton showPath;
 	private MineFieldPanel panel;
+	private UserButtonPanel panel2;
 	
 	MineWalkerPanel(int width, int height){
 		//sets the MineWalkerPanel to a MineFieldPanel with the button listener and dimensions as parameters
 		panel = new MineFieldPanel(new MineButtonListener(), width, height);
-		//adds a reset button (that will appear outside the MineFieldPanel) and adds an actionListener for it
-		reset = new JButton("reset");
-		reset.addActionListener(new ResetButtonListener());
-		showMines = new JButton("Show Mines");
-		showMines.addActionListener(new ShowMinesListener());
-		showPath = new JButton("Show Path");
-		showPath.addActionListener(new ShowPathListener());
-		//adds panel and reset button to MineWalkerPanel.
+		panel2 = new UserButtonPanel(new ResetButtonListener(), new ShowPathListener(), new ShowMinesListener());
+		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
 		add(panel);
-		add(reset);
-		add(showMines);
-		add(showPath);
+		add(panel2);
 	}
 	
 	
@@ -37,6 +27,7 @@ public class MineWalkerPanel extends JPanel{
 		public void actionPerformed(ActionEvent e)
 		{
 			panel.reset();
+			System.out.println("reset button pressed!");
 		}
 	}
 	
@@ -45,6 +36,7 @@ public class MineWalkerPanel extends JPanel{
 		public void actionPerformed(ActionEvent e)
 		{
 			//HERE call the method that changes the color of the space to match how many mines are around.
+			System.out.println("mine button pressed!");
 		}
 	}
 	
@@ -52,7 +44,9 @@ public class MineWalkerPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) 
 		{
+			panel.showMines();
 			//HERE call the method that changes the color of the mines to black.
+			System.out.println("showMines button pressed!");
 		}
 	}
 	
@@ -60,7 +54,9 @@ public class MineWalkerPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) 
 		{
+			panel.showPath();
 			//HERE call the method that changes the color of the path to blue.
+			System.out.println("showPath button pressed!");
 		}
 	}
 }
