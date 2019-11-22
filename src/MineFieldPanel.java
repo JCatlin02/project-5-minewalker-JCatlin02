@@ -55,12 +55,12 @@ public class MineFieldPanel extends JPanel{
 		
 		//only 25% of the remaining mines should be black. there are 15 spaces in the actualPath, so (64-15)/4 = mines. also = 13(rounded up.)
 		//places mines outside actualPath, does not show them.
-		while (mines < 13) {
+		while (mines < (int)((Math.pow(width, 2) - actualPath.size())/4)) {
 			for(int i = 0; i < spaces.length; i++) {
 				for(int k = 0; k < spaces[i].length; k++) {
 					if(!((MineFieldButton) spaces[i][k]).isPath() && !((MineFieldButton) spaces[i][k]).isMine()) {
-						int rand1 = rand.nextInt(13);
-						if (rand1 == 1 && mines < 13) {
+						int rand1 = rand.nextInt((((int)Math.pow(width, 2) - actualPath.size())/4));
+						if (rand1 == 1 && mines < (int)((Math.pow(width, 2) - actualPath.size())/4)) {
 							((MineFieldButton) spaces[i][k]).makeMine();
 							mines++;
 						}
